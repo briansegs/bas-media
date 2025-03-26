@@ -9,4 +9,4 @@
 - [x] cli
 - [x] deploy
 
-- [] depedencies
+- [x] dependencies
