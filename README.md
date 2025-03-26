@@ -1,8 +1,12 @@
 # Bas - Media
 
-[x] code rabbit
-[x] prettier
-[x] tailwindcss
-[x] clsx
-[x] cli
-[] deploy
+## Tasks / Todos:
+
+- [x] code rabbit
+- [x] prettier
+- [x] tailwindcss
+- [x] clsx
+- [x] cli
+- [x] deploy
+
+- [x] dependencies
