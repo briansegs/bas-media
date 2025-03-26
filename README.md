@@ -4,5 +4,5 @@
 [x] prettier
 [x] tailwindcss
 [x] clsx
-[] cli
+[x] cli
 [] deploy
