@@ -12,7 +12,7 @@ const NavBar: React.FC = () => {
         <nav>
           <ul className="flex gap-4">
             {paths.map((path, index) => (
-              <li>
+              <li key={path + index}>
                 <NavLink to={`/${path}/${index}`}>{path}</NavLink>
               </li>
             ))}
