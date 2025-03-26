@@ -2,7 +2,7 @@
 
 [x] code rabbit
 [] prettier
-[] tailwindcss
+[x] tailwindcss
 [] clsx / cn
 [] cli
 [] deploy

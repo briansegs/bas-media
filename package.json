@@ -11,6 +11,8 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "check": "eslint . && tsc --noEmit",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:write": "prettier --write \"src/**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "reinstall": "rm -rf node_modules && rm pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
@@ -27,6 +29,9 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.0.17",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
