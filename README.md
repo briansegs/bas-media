@@ -1,6 +1,6 @@
 # Bas - Media
 
-[] code rabbit
+[x] code rabbit
 [] prettier
 [] tailwindcss
 [] clsx / cn
