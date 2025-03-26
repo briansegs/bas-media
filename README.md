@@ -1,8 +1,8 @@
 # Bas - Media
 
 [x] code rabbit
-[] prettier
+[x] prettier
 [x] tailwindcss
-[] clsx / cn
+[x] clsx
 [] cli
 [] deploy
