@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "check": "eslint . && tsc --noEmit"
+    "check": "eslint . && tsc --noEmit",
+    "reinstall": "rm -rf node_modules && rm pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
     "react": "^19.0.0",
