@@ -17,3 +17,4 @@
 
 - [x] theme provider
 - [x] add schadcn
+- [ ] side bar
