@@ -1,6 +1,6 @@
 # Bas - Media
 
-## Tasks / Todos:
+## Tasks / Todos
 
 - [x] code rabbit
 - [x] prettier
@@ -10,3 +10,7 @@
 - [x] deploy
 
 - [x] dependencies
+
+- [x] component structure & routing
+
+- [ ] nav bar
