@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import React, { useState } from "react";
 
@@ -27,8 +26,6 @@ const Movies: React.FC = () => {
           Welcome to my site!
         </div>
       )}
-
-      <Button variant="outline">Click Me</Button>
     </div>
   );
 };
