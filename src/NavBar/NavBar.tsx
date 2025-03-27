@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router";
 
 const NavBar: React.FC = () => {
-  const [theme, setTheme] = useState("light");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
