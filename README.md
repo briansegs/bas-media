@@ -15,5 +15,5 @@
 
 - [x] nav bar layout
 
-- [ ] theme provider
+- [x] theme provider
 - [x] add schadcn
