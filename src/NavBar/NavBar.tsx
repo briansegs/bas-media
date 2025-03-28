@@ -8,7 +8,7 @@ const NavBar: React.FC = () => {
 
   return (
     <>
-      <div className="fixed w-full bg-blue-500 dark:bg-slate-700">
+      <div className="fixed w-full bg-blue-500 dark:bg-slate-800">
         {/* toolbar */}
         <div className="mr-4 ml-4 flex h-20 flex-wrap items-center justify-between text-white sm:ml-60 sm:flex-nowrap">
           <button
