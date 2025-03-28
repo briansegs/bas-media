@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import type { Theme } from "./types";
 
@@ -15,7 +15,7 @@ const ThemeSelector: React.FC = () => {
     setValue(themeToSet);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const preference = window.localStorage.getItem(themeLocalStorageKey);
     setValue((preference as Theme) ?? defaultTheme);
   }, []);
