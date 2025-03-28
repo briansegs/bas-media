@@ -1,14 +1,14 @@
-import { Menu, Moon, Sun, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router";
+import ThemeSelector from "../providers/Theme/ThemeSelector";
 
 const NavBar: React.FC = () => {
-  const [theme, setTheme] = useState("light");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <>
-      <div className="fixed w-full bg-blue-500">
+      <div className="fixed w-full bg-blue-500 dark:bg-slate-700">
         {/* toolbar */}
         <div className="mr-4 ml-4 flex h-20 flex-wrap items-center justify-between text-white sm:ml-60 sm:flex-nowrap">
           <button
@@ -19,15 +19,7 @@ const NavBar: React.FC = () => {
             <Menu className="size-[30px]" />
           </button>
 
-          <button
-            type="button"
-            className="cursor-pointer"
-            onClick={() =>
-              setTheme((prev) => (prev === "light" ? "dark" : "light"))
-            }
-          >
-            {theme === "light" ? <Sun /> : <Moon />}
-          </button>
+          <ThemeSelector />
 
           <div className="hidden sm:block">Search...</div>
 
