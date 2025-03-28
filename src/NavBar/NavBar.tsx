@@ -1,6 +1,6 @@
 import { User } from "lucide-react";
 import React, { useState } from "react";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 import ThemeSelector from "../providers/Theme/ThemeSelector";
 import { SideMenu, SideMenuTrigger } from "./SideMenu";
 
@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
               <User className="size-[30px] rounded-full border-2 border-white" />
             </button>
           ) : (
-            <NavLink
+            <Link
               to={`/profile/:id`}
               className="flex cursor-pointer items-center"
               onClick={() => {}}
@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
               <div className="flex size-[30px] items-center justify-center rounded-full border-2 border-white bg-blue-300">
                 <User className="" />
               </div>
-            </NavLink>
+            </Link>
           )}
 
           <div className="flex text-white md:hidden">Search...</div>
