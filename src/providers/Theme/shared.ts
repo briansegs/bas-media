@@ -1,4 +1,4 @@
-import type { Theme } from "./types";
+import { Theme } from "./types";
 
 export const themeLocalStorageKey = "site-theme";
 

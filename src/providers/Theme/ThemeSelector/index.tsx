@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import type { Theme } from "./types";
+import { useTheme } from "..";
+import { defaultTheme, themeLocalStorageKey } from "../shared";
+import { themeIsValid, type Theme } from "../types";
 
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "..";
-import { defaultTheme, themeLocalStorageKey } from "./types";
 
 const ThemeSelector: React.FC = () => {
   const { setTheme } = useTheme();
@@ -17,7 +17,7 @@ const ThemeSelector: React.FC = () => {
 
   useEffect(() => {
     const preference = window.localStorage.getItem(themeLocalStorageKey);
-    setValue((preference as Theme) ?? defaultTheme);
+    setValue(themeIsValid(preference) ? preference : defaultTheme);
   }, []);
 
   return (

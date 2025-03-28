@@ -6,16 +6,15 @@ import React, {
   useState,
 } from "react";
 
-import type { Theme, ThemeContextType } from "./types";
+import { themeIsValid, type Theme, type ThemeContextType } from "./types";
 
-import canUseDOM from "../../utilities/canUseDOM";
 import {
   defaultTheme,
   getImplicitPreference,
   themeLocalStorageKey,
 } from "./shared";
 
-import { themeIsValid } from "./types";
+import canUseDOM from "../../utilities/canUseDOM";
 
 const initialContext: ThemeContextType = {
   setTheme: () => null,
