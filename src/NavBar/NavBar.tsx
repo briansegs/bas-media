@@ -2,14 +2,14 @@ import { User } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router";
 import ThemeSelector from "../providers/Theme/ThemeSelector";
-import { SideMenu, SideMenuTrigger } from "./SideMenu";
+import SideMenu, { SideMenuTrigger } from "./SideMenu";
 
 const NavBar: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <>
-      <div className="bg-navbar fixed w-full">
+      <div className="bg-navbar fixed w-full shadow-lg">
         {/* toolbar */}
         <div className="mr-4 ml-4 flex h-20 flex-wrap items-center justify-between text-white md:ml-64 md:flex-nowrap">
           <SideMenuTrigger />

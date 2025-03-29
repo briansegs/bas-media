@@ -4,16 +4,18 @@ import {
   SidebarSeparator,
   useSidebar,
 } from "@/components/ui/sidebar";
+
 import { Menu } from "lucide-react";
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+
+import Logo from "./Logo";
 
 type Sides = "left" | "right";
 
 const defaultSide = "left";
 
-export const SideMenu: React.FC = () => {
+const SideMenu: React.FC = () => {
   const { isMobile, setOpen } = useSidebar();
   const [sideBarSide, setSideBarside] = useState<Sides>(defaultSide);
 
@@ -28,29 +30,7 @@ export const SideMenu: React.FC = () => {
   return (
     <Sidebar side={sideBarSide}>
       <SidebarHeader>
-        <div className="flex h-16 items-center justify-center">
-          <Link to="/" className="flex items-center">
-            <img
-              src="/public/assets/logo_light.png"
-              height={60}
-              width={60}
-              alt="Logo"
-              className="dark:hidden"
-            />
-
-            <img
-              src="/public/assets/logo_dark.png"
-              height={60}
-              width={60}
-              alt="Logo"
-              className="hidden dark:block"
-            />
-
-            <div className="flex text-4xl font-bold text-black dark:text-red-500">
-              BAS
-            </div>
-          </Link>
-        </div>
+        <Logo />
       </SidebarHeader>
       <SidebarSeparator />
     </Sidebar>
@@ -70,3 +50,5 @@ export const SideMenuTrigger: React.FC = () => {
     </button>
   );
 };
+
+export default SideMenu;
