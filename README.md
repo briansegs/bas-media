@@ -13,4 +13,6 @@
 
 - [x] component structure & routing
 
-- [ ] nav bar
+- [x] nav bar layout
+
+- [ ] setup Redux

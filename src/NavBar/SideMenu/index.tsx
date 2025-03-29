@@ -1,5 +1,6 @@
 import {
   Sidebar,
+  SidebarContent,
   SidebarHeader,
   SidebarSeparator,
   useSidebar,
@@ -10,6 +11,7 @@ import { Menu } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 import Logo from "./Logo";
+import SidebarGroups from "./SidebarGroups";
 
 type Sides = "left" | "right";
 
@@ -33,6 +35,9 @@ const SideMenu: React.FC = () => {
         <Logo />
       </SidebarHeader>
       <SidebarSeparator />
+      <SidebarContent>
+        <SidebarGroups />
+      </SidebarContent>
     </Sidebar>
   );
 };
