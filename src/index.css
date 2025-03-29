@@ -4,7 +4,6 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-
   --radius: 0.625rem;
 
   --background: oklch(1 0 0);
@@ -53,9 +52,9 @@
 
   --chart-5: oklch(0.769 0.188 70.08);
 
-  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar: oklch(1 0 0 / 1);
 
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-foreground: oklch(12.9% 0.042 264.7);
 
   --sidebar-primary: oklch(0.208 0.042 265.755);
 
@@ -68,11 +67,12 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
 
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  --navbar: oklch(0.56 0.16 253.27 / 1);
 }
 
-.dark {
-
-  --background: oklch(0.129 0.042 264.695);
+[data-theme="dark"] {
+  --background: oklch(0.18 0 0 / 1);
 
   --foreground: oklch(0.984 0.003 247.858);
 
@@ -118,7 +118,7 @@
 
   --chart-5: oklch(0.645 0.246 16.439);
 
-  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar: oklch(0.18 0 0 / 1);
 
   --sidebar-foreground: oklch(0.984 0.003 247.858);
 
@@ -133,10 +133,11 @@
   --sidebar-border: oklch(1 0 0 / 10%);
 
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  --navbar: oklch(0.27 0 0 / 1);
 }
 
 @theme inline {
-
   --radius-sm: calc(var(--radius) - 4px);
 
   --radius-md: calc(var(--radius) - 2px);
@@ -206,6 +207,8 @@
   --color-sidebar-border: var(--sidebar-border);
 
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-navbar: var(--navbar);
 }
 
 @layer base {
