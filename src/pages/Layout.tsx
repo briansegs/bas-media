@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 const Layout: React.FC = () => {
   return (
     // root
-    <div className="flex h-full">
+    <div className="bg-background flex h-screen w-full">
       <NavBar />
       {/* content */}
       <main className="grow p-8">
