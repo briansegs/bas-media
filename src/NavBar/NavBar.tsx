@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
               onClick={() => {}}
             >
               <div className="hidden md:block">My Movies &nbsp;</div>
-              <div className="flex size-[30px] items-center justify-center rounded-full border-2 border-white bg-blue-300">
+              <div className="flex size-[30px] items-center justify-center rounded-full border-2 border-white bg-blue-300 dark:bg-red-300">
                 <User className="" />
               </div>
             </Link>

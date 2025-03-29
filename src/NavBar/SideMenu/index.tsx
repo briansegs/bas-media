@@ -19,18 +19,18 @@ const defaultSide = "left";
 
 const SideMenu: React.FC = () => {
   const { isMobile, setOpen } = useSidebar();
-  const [sideBarSide, setSideBarside] = useState<Sides>(defaultSide);
+  const [sidebarSide, setSidebarside] = useState<Sides>(defaultSide);
 
   useEffect(() => {
     if (!isMobile) {
       setOpen(true);
-      setSideBarside("left");
+      setSidebarside("left");
     } else {
-      setSideBarside("right");
+      setSidebarside("right");
     }
   }, [isMobile, setOpen]);
   return (
-    <Sidebar side={sideBarSide}>
+    <Sidebar side={sidebarSide}>
       <SidebarHeader>
         <Logo />
       </SidebarHeader>

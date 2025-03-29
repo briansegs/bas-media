@@ -7,8 +7,6 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import { useTheme } from "@/providers/Theme";
-import { Theme } from "@/providers/Theme/types";
 import React from "react";
 import { Link } from "react-router";
 
@@ -25,15 +23,14 @@ const demoCategories = [
   { label: "Animation", value: "animation" },
 ];
 
-type SbGrouptypes = {
-  label: string;
+type SbGroupProps = {
+  title: string;
   data: { label: string; value: string }[];
-  theme: Theme | undefined | null;
 };
 
-const SbGroup = ({ label, data, theme }: SbGrouptypes) => (
+const SbGroup = ({ title, data }: SbGroupProps) => (
   <SidebarGroup>
-    <SidebarGroupLabel>{label}</SidebarGroupLabel>
+    <SidebarGroupLabel>{title}</SidebarGroupLabel>
     <SidebarGroupContent>
       <SidebarMenu>
         {data.map(({ label, value }) => (
@@ -46,15 +43,11 @@ const SbGroup = ({ label, data, theme }: SbGrouptypes) => (
             >
               <Link to="/">
                 <img
-                  src={
-                    theme == "light"
-                      ? "/assets/logo_light.png"
-                      : "/assets/logo_dark.png"
-                  }
-                  alt=""
+                  src="/assets/logo_light.png"
+                  alt={`${label} icon`}
                   height={30}
                   width={30}
-                  className=""
+                  className="dark:invert"
                 />
                 <span className="text-lg">{label}</span>
               </Link>
@@ -67,15 +60,13 @@ const SbGroup = ({ label, data, theme }: SbGrouptypes) => (
 );
 
 const SidebarGroups: React.FC = () => {
-  const { theme } = useTheme();
-
   return (
     <>
-      <SbGroup label="Categories" data={categories} theme={theme} />
+      <SbGroup title="Categories" data={categories} />
 
       <SidebarSeparator />
 
-      <SbGroup label="Genres" data={demoCategories} theme={theme} />
+      <SbGroup title="Genres" data={demoCategories} />
     </>
   );
 };

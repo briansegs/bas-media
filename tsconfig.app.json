@@ -7,7 +7,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* For shadcn */
+    // @ts-comment For shadcn
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
