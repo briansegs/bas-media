@@ -23,10 +23,10 @@ const demoCategories = [
   { label: "Animation", value: "animation" },
 ];
 
-type SbGroupProps = {
+interface SbGroupProps {
   title: string;
   data: { label: string; value: string }[];
-};
+}
 
 const SbGroup = ({ title, data }: SbGroupProps) => (
   <SidebarGroup>
