@@ -16,3 +16,5 @@
 - [x] nav bar layout
 
 - [ ] setup Redux
+
+- [ ] display movies

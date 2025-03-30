@@ -1,10 +1,14 @@
+import { useGetMoviesQuery } from "@/services/TMDB";
 import clsx from "clsx";
 import React, { useState } from "react";
 
 const bool = true;
 
 const Movies: React.FC = () => {
+  const { data } = useGetMoviesQuery();
   const [toggleMsg, setToggleMsg] = useState(false);
+
+  console.log("data: ", data);
 
   return (
     <div
