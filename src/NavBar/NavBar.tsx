@@ -9,7 +9,7 @@ const NavBar: React.FC = () => {
 
   return (
     <>
-      <div className="bg-navbar fixed w-full shadow-lg">
+      <div className="bg-navbar fixed z-10 w-full shadow-lg">
         {/* toolbar */}
         <div className="mr-4 ml-4 flex h-20 flex-wrap items-center justify-between text-white md:ml-64 md:flex-nowrap">
           <SideMenuTrigger />
