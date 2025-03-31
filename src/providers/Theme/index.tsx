@@ -14,7 +14,7 @@ import {
   themeLocalStorageKey,
 } from "./shared";
 
-import canUseDOM from "../../utilities/canUseDOM";
+import { canUseDOM } from "@/lib/utils";
 
 const initialContext: ThemeContextType = {
   setTheme: () => null,
@@ -29,6 +29,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       ? (document.documentElement.getAttribute("data-theme") as Theme)
       : undefined,
   );
+
+  console.log(canUseDOM);
 
   const setTheme = useCallback((themeToSet: Theme | null) => {
     if (themeToSet === null) {
