@@ -7,7 +7,8 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
-import React from "react";
+import { useGetGenresQuery } from "@/services/TMDB";
+import React, { ReactNode } from "react";
 import { Link } from "react-router";
 
 const categories = [
@@ -16,57 +17,72 @@ const categories = [
   { label: "Upcoming", value: "upcoming" },
 ];
 
-const demoCategories = [
-  { label: "Comedy", value: "comedy" },
-  { label: "Action", value: "action" },
-  { label: "Horror", value: "horror" },
-  { label: "Animation", value: "animation" },
-];
-
 interface SbGroupProps {
   title: string;
-  data: { label: string; value: string }[];
+  children: ReactNode;
 }
 
-const SbGroup = ({ title, data }: SbGroupProps) => (
-  <SidebarGroup>
-    <SidebarGroupLabel>{title}</SidebarGroupLabel>
-    <SidebarGroupContent>
-      <SidebarMenu>
-        {data.map(({ label, value }) => (
-          <SidebarMenuItem key={value}>
-            <SidebarMenuButton
-              asChild
-              size="lg"
-              className="gap-4"
-              onClick={() => {}}
-            >
-              <Link to="/">
-                <img
-                  src="/assets/logo_light.webp"
-                  alt={`${label} icon`}
-                  height={30}
-                  width={30}
-                  className="dark:invert"
-                />
-                <span className="text-lg">{label}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-      </SidebarMenu>
-    </SidebarGroupContent>
-  </SidebarGroup>
+interface MenuItemProps {
+  label?: string;
+  value?: string;
+  name?: string;
+}
+
+const SbGroup: React.FC<SbGroupProps> = ({ title, children }) => {
+  return (
+    <SidebarGroup>
+      <SidebarGroupLabel>{title}</SidebarGroupLabel>
+      <SidebarGroupContent>
+        <SidebarMenu>{children}</SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
+};
+
+const MenuItem: React.FC<MenuItemProps> = ({ name, label, value }) => (
+  <SidebarMenuItem key={name ? name : value}>
+    <SidebarMenuButton asChild size="lg" className="gap-4" onClick={() => {}}>
+      <Link to="/">
+        <img
+          src="/assets/logo_light.webp"
+          alt={`${name ? name : label} icon`}
+          height={30}
+          width={30}
+          className="dark:invert"
+        />
+        <span className="text-lg">{name ? name : label}</span>
+      </Link>
+    </SidebarMenuButton>
+  </SidebarMenuItem>
 );
 
 const SidebarGroups: React.FC = () => {
+  const { data, error, isFetching, isLoading } = useGetGenresQuery();
+  const genres = data?.genres;
+
+  if (error) return "Error";
+
+  if (isLoading || isFetching) return "Loading...";
+
   return (
     <>
-      <SbGroup title="Categories" data={categories} />
+      {categories && (
+        <SbGroup title="Categories">
+          {categories.map(({ label, value }) => (
+            <MenuItem label={label} value={value} />
+          ))}
+        </SbGroup>
+      )}
 
       <SidebarSeparator />
 
-      <SbGroup title="Genres" data={demoCategories} />
+      {genres && (
+        <SbGroup title="Genres">
+          {genres.map(({ name }) => (
+            <MenuItem name={name} />
+          ))}
+        </SbGroup>
+      )}
     </>
   );
 };
