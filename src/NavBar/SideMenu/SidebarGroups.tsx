@@ -43,7 +43,7 @@ const SbGroup = ({ title, data }: SbGroupProps) => (
             >
               <Link to="/">
                 <img
-                  src="/assets/logo_light.png"
+                  src="/assets/logo_light.webp"
                   alt={`${label} icon`}
                   height={30}
                   width={30}

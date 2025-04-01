@@ -5,8 +5,8 @@ import { Link } from "react-router";
 const Logo: React.FC = () => {
   const { theme } = useTheme();
 
-  const lightLogo = "/assets/logo_light.png";
-  const darkLogo = "/assets/logo_dark.png";
+  const lightLogo = "/assets/logo_light.webp";
+  const darkLogo = "/assets/logo_dark.webp";
   return (
     <div className="flex h-16 items-center justify-center">
       <Link to="/" className="flex items-center">
