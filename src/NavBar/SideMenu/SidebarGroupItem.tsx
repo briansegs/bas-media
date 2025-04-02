@@ -33,8 +33,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({ name, label, value }) => (
     <SidebarMenuButton asChild size="lg" className="gap-4" onClick={() => {}}>
       <Link to="/">
         <div className="size-[30px]">
-          {(name && genreIcons[name.toLowerCase()]) || fallbackIcon}
-          {(value && genreIcons[value.toLowerCase()]) || fallbackIcon}
+          {name
+            ? genreIcons[name.toLowerCase()] || fallbackIcon
+            : value
+              ? genreIcons[value.toLowerCase()] || fallbackIcon
+              : fallbackIcon}
         </div>
         <span className="text-lg">{name ? name : label}</span>
       </Link>
