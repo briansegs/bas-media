@@ -1,4 +1,5 @@
 import {
+  MovieListsGenresResponse,
   MovieListsPopularQueryParams,
   MovieListsPopularResponse,
 } from "@/types/tmdbApi";
@@ -18,15 +19,6 @@ const defaultParams: {
     language: "en-US",
   },
 };
-
-export interface Genre {
-  id: number;
-  name: string;
-}
-
-export interface MovieListsGenresResponse {
-  genres: Genre[];
-}
 
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",

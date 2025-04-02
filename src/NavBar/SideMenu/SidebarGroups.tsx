@@ -1,15 +1,8 @@
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarSeparator,
-} from "@/components/ui/sidebar";
+import StatusCard from "@/components/StatusCard";
+import { SidebarSeparator } from "@/components/ui/sidebar";
 import { useGetGenresQuery } from "@/services/TMDB";
-import React, { ReactNode } from "react";
-import { Link } from "react-router";
+import React from "react";
+import { MenuItem, SidebarMenuGroup } from "./SidebarGroupItem";
 
 const categories = [
   { label: "Popular", value: "popular" },
@@ -17,71 +10,57 @@ const categories = [
   { label: "Upcoming", value: "upcoming" },
 ];
 
-interface SbGroupProps {
-  title: string;
-  children: ReactNode;
-}
-
-interface MenuItemProps {
-  label?: string;
-  value?: string;
-  name?: string;
-}
-
-const SbGroup: React.FC<SbGroupProps> = ({ title, children }) => {
-  return (
-    <SidebarGroup>
-      <SidebarGroupLabel>{title}</SidebarGroupLabel>
-      <SidebarGroupContent>
-        <SidebarMenu>{children}</SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
-  );
-};
-
-const MenuItem: React.FC<MenuItemProps> = ({ name, label, value }) => (
-  <SidebarMenuItem key={name ? name : value}>
-    <SidebarMenuButton asChild size="lg" className="gap-4" onClick={() => {}}>
-      <Link to="/">
-        <img
-          src="/assets/logo_light.webp"
-          alt={`${name ? name : label} icon`}
-          height={30}
-          width={30}
-          className="dark:invert"
-        />
-        <span className="text-lg">{name ? name : label}</span>
-      </Link>
-    </SidebarMenuButton>
-  </SidebarMenuItem>
-);
-
 const SidebarGroups: React.FC = () => {
   const { data, error, isFetching, isLoading } = useGetGenresQuery();
   const genres = data?.genres;
 
-  if (error) return "Error";
+  if (error)
+    return (
+      <div className="mx-2.5 mt-5 flex items-center justify-center">
+        <StatusCard
+          isError
+          title="An error occurred while loading content."
+          description="Please try again later."
+        />
+      </div>
+    );
 
-  if (isLoading || isFetching) return "Loading...";
+  if (isLoading || isFetching)
+    return (
+      <div className="mx-2.5 mt-5 flex items-center justify-center">
+        <StatusCard title="Loading content..." />
+      </div>
+    );
 
+  if (!genres?.length) {
+    return (
+      <div className="mx-2.5 mt-5 flex items-center justify-center">
+        <StatusCard
+          isError
+          title="Genres list is missing."
+          description="Please contact an admin."
+        />
+      </div>
+    );
+  }
   return (
     <>
       {categories && (
-        <SbGroup title="Categories">
+        <SidebarMenuGroup title="Categories">
           {categories.map(({ label, value }) => (
-            <MenuItem label={label} value={value} />
+            <MenuItem key={label} label={label} value={value} />
           ))}
-        </SbGroup>
+        </SidebarMenuGroup>
       )}
 
       <SidebarSeparator />
 
       {genres && (
-        <SbGroup title="Genres">
+        <SidebarMenuGroup title="Genres">
           {genres.map(({ name }) => (
-            <MenuItem name={name} />
+            <MenuItem key={name} name={name} />
           ))}
-        </SbGroup>
+        </SidebarMenuGroup>
       )}
     </>
   );
