@@ -19,4 +19,6 @@
 
 - [x] display movies
 
-- [ ] movie categories
+- [x] movie categories
+
+- [ ] filter and search
