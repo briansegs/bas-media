@@ -30,8 +30,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       : undefined,
   );
 
-  console.log(canUseDOM);
-
   const setTheme = useCallback((themeToSet: Theme | null) => {
     if (themeToSet === null) {
       window.localStorage.removeItem(themeLocalStorageKey);

@@ -1,4 +1,5 @@
 import {
+  MovieListsGenresResponse,
   MovieListsPopularQueryParams,
   MovieListsPopularResponse,
 } from "@/types/tmdbApi";
@@ -6,10 +7,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const tmdbApiToken = import.meta.env.VITE_TMDB_TOKEN;
 
-const defaultParams: { popular: MovieListsPopularQueryParams } = {
+const defaultParams: {
+  popular: MovieListsPopularQueryParams;
+  genres: { language: string };
+} = {
   popular: {
     language: "en-US",
     page: 1,
+  },
+  genres: {
+    language: "en-US",
   },
 };
 
@@ -23,7 +30,15 @@ export const tmdbApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    // * Get Movies by [type]
+    //* Get Genres
+    getGenres: builder.query<MovieListsGenresResponse, void>({
+      query: () => {
+        const { language } = defaultParams.genres;
+        return `genre/movie/list?language=${language}`;
+      },
+    }),
+
+    //* Get Movies by [type]
     getMovies: builder.query<MovieListsPopularResponse, void>({
       query: () => {
         const { language, page } = defaultParams.popular;
@@ -33,4 +48,4 @@ export const tmdbApi = createApi({
   }),
 });
 
-export const { useGetMoviesQuery } = tmdbApi;
+export const { useGetGenresQuery, useGetMoviesQuery } = tmdbApi;

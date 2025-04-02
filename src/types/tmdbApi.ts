@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface MovieListsPopularResult {
   adult: boolean;
   backdrop_path: string;
@@ -23,7 +25,27 @@ export interface MovieListsPopularResponse {
 }
 
 export interface MovieListsPopularQueryParams {
-  language?: string; // Defaults to "en-US"
-  page?: number; // Defaults to 1
-  region?: string; // ISO-3166-1 code
+  language?: string;
+  page?: number;
+  region?: string;
+}
+
+export interface SbGroupProps {
+  title: string;
+  children: ReactNode;
+}
+
+export interface MenuItemProps {
+  label?: string;
+  value?: string;
+  name?: string;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface MovieListsGenresResponse {
+  genres: Genre[];
 }

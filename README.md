@@ -15,6 +15,10 @@
 
 - [x] nav bar layout
 
-- [ ] setup Redux
+- [x] setup Redux
 
-- [ ] display movies
+- [x] display movies
+
+- [x] movie categories
+
+- [ ] filter and search
