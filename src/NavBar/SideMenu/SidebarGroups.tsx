@@ -57,8 +57,8 @@ const SidebarGroups: React.FC = () => {
 
       {genres && (
         <SidebarMenuGroup title="Genres">
-          {genres.map(({ name }) => (
-            <MenuItem key={name} name={name} />
+          {genres.map(({ name, id }) => (
+            <MenuItem key={name} name={name} id={id} />
           ))}
         </SidebarMenuGroup>
       )}
