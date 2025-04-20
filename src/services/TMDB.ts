@@ -41,8 +41,12 @@ export const tmdbApi = createApi({
 
     //* Get Movies by [type]
     getMovies: builder.query<MovieListsPopularResponse, GenreOrCategoryState>({
-      query: ({ genreIdOrCategoryName, page }) => {
+      query: ({ genreIdOrCategoryName, page, searchQuery }) => {
         const { language } = defaultParams.popular;
+        //* Get Movie by Search
+        if (searchQuery) {
+          return `search/movie?query=${searchQuery}&language=${language}&page=${page}`;
+        }
 
         //* Get Movies by Category
         if (

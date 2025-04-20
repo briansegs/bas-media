@@ -7,12 +7,13 @@ import MovieList from "./MovieList";
 
 const Movies: React.FC = () => {
   const [page, setPage] = useState(1);
-  const { genreIdOrCategoryName } = useSelector(
+  const { genreIdOrCategoryName, searchQuery } = useSelector(
     (state: RootState) => state.currentGenreOrCategory,
   );
   const { data, error, isLoading, isFetching } = useGetMoviesQuery({
     genreIdOrCategoryName: genreIdOrCategoryName ?? "",
     page,
+    searchQuery,
   });
 
   if (error)
