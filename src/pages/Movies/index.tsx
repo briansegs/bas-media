@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 
 const Movies: React.FC = () => {
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
   const { genreIdOrCategoryName, searchQuery } = useSelector(
     (state: RootState) => state.currentGenreOrCategory,
   );

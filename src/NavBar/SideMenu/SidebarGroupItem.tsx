@@ -1,4 +1,3 @@
-import { RootState } from "@/app/store";
 import genreIcons from "@/assets/genres";
 import {
   SidebarGroup,
@@ -12,7 +11,7 @@ import { selectGenreOrCategory } from "@/currentGenreOrCategory";
 import { MenuItemProps, SbGroupProps } from "@/types/tmdbApi";
 import React from "react";
 import { FaSquare } from "react-icons/fa6";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router";
 
 const fallbackIcon = <FaSquare className="size-[30px]" />;
@@ -38,9 +37,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   id,
 }) => {
   const dispatch = useDispatch();
-  const { genreIdOrCategoryName } = useSelector(
-    (state: RootState) => state.currentGenreOrCategory,
-  );
+  // const { genreIdOrCategoryName } = useSelector(
+  //   (state: RootState) => state.currentGenreOrCategory,
+  // );
 
   return (
     <SidebarMenuItem>
