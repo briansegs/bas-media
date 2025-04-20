@@ -1,3 +1,4 @@
+import Search from "@/components/Search";
 import { User } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router";
@@ -16,7 +17,9 @@ const NavBar: React.FC = () => {
 
           <ThemeSelector />
 
-          <div className="hidden md:block">Search...</div>
+          <div className="hidden md:block">
+            <Search />
+          </div>
 
           {!isAuthenticated ? (
             <button
@@ -40,7 +43,9 @@ const NavBar: React.FC = () => {
             </Link>
           )}
 
-          <div className="flex text-white md:hidden">Search...</div>
+          <div className="flex w-full items-center justify-center text-white md:hidden">
+            <Search />
+          </div>
         </div>
       </div>
 

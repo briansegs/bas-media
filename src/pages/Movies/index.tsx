@@ -1,10 +1,20 @@
+import { RootState } from "@/app/store";
 import StatusCard from "@/components/StatusCard";
 import { useGetMoviesQuery } from "@/services/TMDB";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
 
 const Movies: React.FC = () => {
-  const { data, error, isLoading, isFetching } = useGetMoviesQuery();
+  const [page] = useState(1);
+  const { genreIdOrCategoryName, searchQuery } = useSelector(
+    (state: RootState) => state.currentGenreOrCategory,
+  );
+  const { data, error, isLoading, isFetching } = useGetMoviesQuery({
+    genreIdOrCategoryName: genreIdOrCategoryName ?? "",
+    page,
+    searchQuery,
+  });
 
   if (error)
     return (

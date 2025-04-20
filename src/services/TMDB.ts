@@ -1,3 +1,4 @@
+import { GenreOrCategoryState } from "@/currentGenreOrCategory";
 import {
   MovieListsGenresResponse,
   MovieListsPopularQueryParams,
@@ -39,9 +40,31 @@ export const tmdbApi = createApi({
     }),
 
     //* Get Movies by [type]
-    getMovies: builder.query<MovieListsPopularResponse, void>({
-      query: () => {
-        const { language, page } = defaultParams.popular;
+    getMovies: builder.query<MovieListsPopularResponse, GenreOrCategoryState>({
+      query: ({ genreIdOrCategoryName, page, searchQuery }) => {
+        const { language } = defaultParams.popular;
+        //* Get Movie by Search
+        if (searchQuery) {
+          return `search/movie?query=${searchQuery}&language=${language}&page=${page}`;
+        }
+
+        //* Get Movies by Category
+        if (
+          genreIdOrCategoryName &&
+          typeof genreIdOrCategoryName === "string"
+        ) {
+          return `movie/${genreIdOrCategoryName}?language=${language}&page=${page}`;
+        }
+
+        //* Get Movies by Genre
+        if (
+          genreIdOrCategoryName &&
+          typeof genreIdOrCategoryName === "number"
+        ) {
+          return `discover/movie?with_genres=${genreIdOrCategoryName}&language=${language}&page=${page}`;
+        }
+
+        //* Get Popular Movies
         return `movie/popular?language=${language}&page=${page}`;
       },
     }),

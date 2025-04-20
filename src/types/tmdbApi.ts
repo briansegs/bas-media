@@ -39,6 +39,7 @@ export interface MenuItemProps {
   label?: string;
   value?: string;
   name?: string;
+  id?: number;
 }
 
 export interface Genre {
