@@ -61,7 +61,7 @@ export const tmdbApi = createApi({
           genreIdOrCategoryName &&
           typeof genreIdOrCategoryName === "number"
         ) {
-          return `discover/movie?with_genres=${genreIdOrCategoryName}?language=${language}&page=${page}`;
+          return `discover/movie?with_genres=${genreIdOrCategoryName}&language=${language}&page=${page}`;
         }
 
         //* Get Popular Movies
