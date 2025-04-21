@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // TODO: Impliment favorites and watchlist feature
+  // TODO: Implement favorites and watchlist feature
   const favoriteMovies = [];
 
   const handleLogout = () => {
@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
       dispatch(setIsAuthenticated(false));
       navigate("/");
     } else {
-      console.error("Something went worng with logout.");
+      console.error("Something went wrong with logout.");
     }
   };
 

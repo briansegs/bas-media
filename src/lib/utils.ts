@@ -59,6 +59,11 @@ export const createSessionId = async () => {
 export const logout = () => {
   const userItems = ["request_token", "session_id", "accountId"];
 
-  userItems.forEach((userItem) => localStorage.removeItem(userItem));
-  return true;
+  try {
+    userItems.forEach((userItem) => localStorage.removeItem(userItem));
+    return true;
+  } catch (error) {
+    console.error("Error during logout:", error);
+    return false;
+  }
 };
