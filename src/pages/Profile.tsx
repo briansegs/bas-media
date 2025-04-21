@@ -1,15 +1,28 @@
 import { Button } from "@/components/ui/button";
-import { userSelector } from "@/features/auth";
+import { setIsAuthenticated, userSelector } from "@/features/auth";
 import { cn, logout } from "@/lib/utils";
 import { LogOut } from "lucide-react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const Profile: React.FC = () => {
   const { user } = useSelector(userSelector);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // TODO: Impliment favorites and watchlist feature
   const favoriteMovies = [];
+
+  const handleLogout = () => {
+    const success = logout();
+    if (success) {
+      dispatch(setIsAuthenticated(false));
+      navigate("/");
+    } else {
+      console.error("Something went worng with logout.");
+    }
+  };
 
   return (
     <div>
@@ -25,7 +38,7 @@ const Profile: React.FC = () => {
         <Button
           className="flex cursor-pointer gap-2 uppercase"
           variant="ghost"
-          onClick={logout}
+          onClick={handleLogout}
         >
           Logout <LogOut />
         </Button>

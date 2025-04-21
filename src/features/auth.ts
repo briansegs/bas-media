@@ -1,8 +1,8 @@
 import { RootState } from "@/app/store";
-import { authSlice as authSliceType, User as UserType } from "@/types/tmdbApi";
+import { AuthSlice as AuthSliceType, User as UserType } from "@/types/tmdbApi";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: authSliceType = {
+const initialState: AuthSliceType = {
   user: null,
   isAuthenticated: false,
   sessionId: null,
@@ -19,10 +19,13 @@ export const authSlice = createSlice({
 
       localStorage.setItem("accountId", action.payload.id.toString());
     },
+    setIsAuthenticated: (state, action: PayloadAction<boolean>) => {
+      state.isAuthenticated = action.payload;
+    },
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser, setIsAuthenticated } = authSlice.actions;
 
 export default authSlice.reducer;
 
