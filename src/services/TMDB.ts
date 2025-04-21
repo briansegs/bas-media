@@ -1,4 +1,4 @@
-import { GenreOrCategoryState } from "@/currentGenreOrCategory";
+import { GenreOrCategoryState } from "@/features/currentGenreOrCategory";
 import {
   MovieListsGenresResponse,
   MovieListsPopularQueryParams,

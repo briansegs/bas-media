@@ -50,3 +50,39 @@ export interface Genre {
 export interface MovieListsGenresResponse {
   genres: Genre[];
 }
+
+export interface GenreOrCategory {
+  genreIdOrCategoryName: string | number | null;
+  page: number;
+  searchQuery?: string;
+  language?: string;
+}
+
+interface TmdbAvatar {
+  avatar_path: string | null;
+}
+
+interface Gravatar {
+  hash: string;
+  tmdb: TmdbAvatar;
+}
+
+interface Avatar {
+  gravatar: Gravatar;
+}
+
+export interface User {
+  avatar: Avatar;
+  id: number;
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  include_adult: boolean;
+  username: string;
+}
+
+export interface authSlice {
+  user: User | null;
+  isAuthenticated: boolean;
+  sessionId: string | null;
+}

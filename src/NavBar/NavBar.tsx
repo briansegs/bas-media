@@ -1,12 +1,47 @@
 import Search from "@/components/Search";
+import { setUser, userSelector } from "@/features/auth";
+import { createSessionId, fetchToken, moviesApi } from "@/lib/utils";
 import { User } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router";
 import ThemeSelector from "../providers/Theme/ThemeSelector";
 import SideMenu, { SideMenuTrigger } from "./SideMenu";
 
 const NavBar: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, user } = useSelector(userSelector);
+
+  const dispatch = useDispatch();
+
+  const token = localStorage.getItem("request_token");
+  const sessionIdFromLocalStorage = localStorage.getItem("session_id");
+
+  // Place holder...
+  console.log(user);
+
+  useEffect(() => {
+    const logInUser = async () => {
+      if (token) {
+        if (sessionIdFromLocalStorage) {
+          const { data: userData } = await moviesApi.get(
+            `/account?session_id=${sessionIdFromLocalStorage}`,
+          );
+
+          dispatch(setUser(userData));
+        } else {
+          const sessionId = await createSessionId();
+
+          const { data: userData } = await moviesApi.get(
+            `/account?session_id=${sessionId}`,
+          );
+
+          dispatch(setUser(userData));
+        }
+      }
+    };
+
+    logInUser();
+  }, [token, sessionIdFromLocalStorage, dispatch]);
 
   return (
     <>
@@ -25,14 +60,14 @@ const NavBar: React.FC = () => {
             <button
               type="button"
               className="flex cursor-pointer items-center"
-              onClick={() => setIsAuthenticated(true)}
+              onClick={fetchToken}
             >
               <div className="hidden md:block">Login &nbsp;</div>
               <User className="size-[30px] rounded-full border-2 border-white" />
             </button>
           ) : (
             <Link
-              to={`/profile/:id`}
+              to={`/profile/${user?.id}`}
               className="flex cursor-pointer items-center"
               onClick={() => {}}
             >
