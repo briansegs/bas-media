@@ -1,4 +1,4 @@
-import { searchMovie } from "@/currentGenreOrCategory";
+import { searchMovie } from "@/features/currentGenreOrCategory";
 import { cn } from "@/lib/utils";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";

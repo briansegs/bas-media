@@ -1,5 +1,5 @@
-import { GenreOrCategoryState } from "@/currentGenreOrCategory";
 import {
+  GenreOrCategory,
   MovieListsGenresResponse,
   MovieListsPopularQueryParams,
   MovieListsPopularResponse,
@@ -40,7 +40,7 @@ export const tmdbApi = createApi({
     }),
 
     //* Get Movies by [type]
-    getMovies: builder.query<MovieListsPopularResponse, GenreOrCategoryState>({
+    getMovies: builder.query<MovieListsPopularResponse, GenreOrCategory>({
       query: ({ genreIdOrCategoryName, page, searchQuery }) => {
         const { language } = defaultParams.popular;
         //* Get Movie by Search

@@ -1,5 +1,5 @@
-import { RootState } from "@/app/store";
 import StatusCard from "@/components/StatusCard";
+import { genreOrCategorySelector } from "@/features/currentGenreOrCategory";
 import { useGetMoviesQuery } from "@/services/TMDB";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import MovieList from "./MovieList";
 const Movies: React.FC = () => {
   const [page] = useState(1);
   const { genreIdOrCategoryName, searchQuery } = useSelector(
-    (state: RootState) => state.currentGenreOrCategory,
+    genreOrCategorySelector,
   );
   const { data, error, isLoading, isFetching } = useGetMoviesQuery({
     genreIdOrCategoryName: genreIdOrCategoryName ?? "",
