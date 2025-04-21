@@ -1,3 +1,4 @@
+import { RootState } from "@/app/store";
 import { GenreOrCategory as GenreOrCategoryType } from "@/types/tmdbApi";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -25,3 +26,6 @@ export const genreOrCategory = createSlice({
 export const { selectGenreOrCategory, searchMovie } = genreOrCategory.actions;
 
 export default genreOrCategory.reducer;
+
+export const genreOrCategorySelector = (state: RootState) =>
+  state.currentGenreOrCategory;

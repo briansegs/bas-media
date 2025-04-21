@@ -55,3 +55,11 @@ export const createSessionId = async () => {
     }
   }
 };
+
+export const logout = () => {
+  const userItems = ["request_token", "session_id", "accountId"];
+
+  userItems.map((userItem) => localStorage.removeItem(userItem));
+
+  window.location.href = "/";
+};
